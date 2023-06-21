@@ -16,7 +16,7 @@ import constants.ForwardConst;
 import constants.PropertyConst;
 
 /**
- * 各Actionクラスの親クラス。共通処理を行う
+ * 各Actionクラスの親クラス。共通処理を行う。
  *
  */
 public abstract class ActionBase {
@@ -26,6 +26,7 @@ public abstract class ActionBase {
 
     /**
      * 初期化処理
+     * サーブレットコンテキスト、リクエスト、レスポンスをクラスフィールドに設定
      * @param servletContext
      * @param servletRequest
      * @param servletResponse
@@ -40,11 +41,10 @@ public abstract class ActionBase {
     }
 
     /**
-     * フロントコントローラから呼び出させるメソッド
+     * フロントコントローラから呼び出されるメソッド
      * @throws ServletException
      * @throws IOException
      */
-
     public abstract void process() throws ServletException, IOException;
 
     /**
@@ -52,39 +52,39 @@ public abstract class ActionBase {
      * @throws ServletException
      * @throws IOException
      */
-
     protected void invoke()
-            throws ServletException, IOException{
+            throws ServletException, IOException {
+
         Method commandMethod;
         try {
 
             //パラメータからcommandを取得
             String command = request.getParameter(ForwardConst.CMD.getValue());
 
-            //commandに該当するメソッドを実行
+            //ommandに該当するメソッドを実行する
             //(例: action=Employee command=show の場合 EmployeeActionクラスのshow()メソッドを実行する)
             commandMethod = this.getClass().getDeclaredMethod(command, new Class[0]);
             commandMethod.invoke(this, new Object[0]); //メソッドに渡す引数はなし
 
-        }catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException | NullPointerException e) {
 
             //発生した例外をコンソールに表示
             e.printStackTrace();
             //commandの値が不正で実行できない場合エラー画面を呼び出し
             forward(ForwardConst.FW_ERR_UNKNOWN);
-
         }
+
     }
 
     /**
      * 指定されたjspの呼び出しを行う
      * @param target 遷移先jsp画面のファイル名(拡張子を含まない)
-     * @param ServletException
+     * @throws ServletException
      * @throws IOException
      */
-
     protected void forward(ForwardConst target) throws ServletException, IOException {
+
         //jspファイルの相対パスを作成
         String forward = String.format("/WEB-INF/views/%s.jsp", target.getValue());
         RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
@@ -99,14 +99,13 @@ public abstract class ActionBase {
      * @param action パラメータに設定する値
      * @param command パラメータに設定する値
      * @throws ServletException
-     * @htrows IOException
+     * @throws IOException
      */
-
     protected void redirect(ForwardConst action, ForwardConst command)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
 
         //URLを構築
-        String redirectUrl = request.getContextPath() + "/action=" + action.getValue();
+        String redirectUrl = request.getContextPath() + "/?action=" + action.getValue();
         if (command != null) {
             redirectUrl = redirectUrl + "&command=" + command.getValue();
         }
@@ -122,7 +121,6 @@ public abstract class ActionBase {
      * @throws ServletException
      * @throws IOException
      */
-
     protected boolean checkToken() throws ServletException, IOException {
 
         //パラメータからtokenの値を取得
@@ -134,7 +132,7 @@ public abstract class ActionBase {
             forward(ForwardConst.FW_ERR_UNKNOWN);
 
             return false;
-        }else {
+        } else {
             return true;
         }
 
@@ -142,16 +140,15 @@ public abstract class ActionBase {
 
     /**
      * セッションIDを取得する
-     * @rerurn セッションID
+     * @return セッションID
      */
-
     protected String getTokenId() {
         return request.getSession().getId();
     }
 
     /**
      * リクエストから表示を要求されているページ数を取得し、返却する
-     * @raturn 要求されているページ数(要求がない場合は1)
+     * @return 要求されているページ数(要求がない場合は1)
      */
     protected int getPage() {
         int page;
@@ -164,14 +161,13 @@ public abstract class ActionBase {
 
     /**
      * 文字列を数値に変換する
-     * @param strNumber　変換前文字列
+     * @param strNumber 変換前文字列
      * @return 変換後数値
      */
-
-    protected int toNumber(String srtNumber) {
+    protected int toNumber(String strNumber) {
         int number = 0;
         try {
-            number = Integer.parseInt(srtNumber);
+            number = Integer.parseInt(strNumber);
         } catch (Exception e) {
             number = Integer.MIN_VALUE;
         }
@@ -183,7 +179,6 @@ public abstract class ActionBase {
      * @param strDate 変換前文字列
      * @return 変換後LocalDateインスタンス
      */
-
     protected LocalDate toLocalDate(String strDate) {
         if (strDate == null || strDate.equals("")) {
             return LocalDate.now();
@@ -192,11 +187,10 @@ public abstract class ActionBase {
     }
 
     /**
-     * リクエストパラメータから引数で指定したパラメータ名を値を返却する
+     * リクエストパラメータから引数で指定したパラメータ名の値を返却する
      * @param key パラメータ名
      * @return パラメータの値
      */
-
     protected String getRequestParam(AttributeConst key) {
         return request.getParameter(key.getValue());
     }
@@ -206,7 +200,6 @@ public abstract class ActionBase {
      * @param key パラメータ名
      * @param value パラメータの値
      */
-
     protected <V> void putRequestScope(AttributeConst key, V value) {
         request.setAttribute(key.getValue(), value);
     }
@@ -216,7 +209,6 @@ public abstract class ActionBase {
      * @param key パラメータ名
      * @return パラメータの値
      */
-
     @SuppressWarnings("unchecked")
     protected <R> R getSessionScope(AttributeConst key) {
         return (R) request.getSession().getAttribute(key.getValue());
@@ -227,7 +219,6 @@ public abstract class ActionBase {
      * @param key パラメータ名
      * @param value パラメータの値
      */
-
     protected <V> void putSessionScope(AttributeConst key, V value) {
         request.getSession().setAttribute(key.getValue(), value);
     }
@@ -245,6 +236,7 @@ public abstract class ActionBase {
      * @param key パラメータ名
      * @return パラメータの値
      */
+
     @SuppressWarnings("unchecked")
     protected <R> R getContextScope(PropertyConst key) {
         return (R) context.getAttribute(key.getValue());
