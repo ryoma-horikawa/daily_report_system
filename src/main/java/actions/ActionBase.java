@@ -217,7 +217,7 @@ public abstract class ActionBase {
      * @return パラメータの値
      */
 
-    @SuppressWarnings("uncheked")
+    @SuppressWarnings("unchecked")
     protected <R> R getSessionScope(AttributeConst key) {
         return (R) request.getSession().getAttribute(key.getValue());
     }
