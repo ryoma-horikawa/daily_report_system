@@ -64,6 +64,8 @@ public class AuthAction extends ActionBase {
         String code = getRequestParam(AttributeConst.EMP_CODE);
         String plainPass = getRequestParam(AttributeConst.EMP_PASS);
         String pepper = getContextScope(PropertyConst.PEPPER);
+     // codeの値をコンソールへ出力
+       // System.out.println("code:"+code);
 
         //有効な従業員か認証する
         Boolean isValidEmployee = service.validateLogin(code, plainPass, pepper);
@@ -120,19 +122,5 @@ public class AuthAction extends ActionBase {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
