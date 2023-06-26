@@ -83,23 +83,25 @@ public interface JpaConst {
     String TABLE_CLI = "client"; //テーブル名
     //顧客テーブルカラム
     String CLI_COL_ID = "id"; //id
+    String CLI_COL_EMP = "employee_id"; //顧客情報を作成した従業員のid
     String CLI_COL_NAME = "name"; //顧客の名前
     String CLI_COL_INFO = "information"; //顧客の情報
     String CLI_COL_ADDRESS = "address"; //顧客の住所
     String CLI_COL_PHONE = "phone"; //顧客の電話番号
     String CLI_COL_EMAIL = "email"; //顧客のメールアドレス
-    String CLI_COL_CUSTOMER ="Customer"; //顧客の担当者
+    String CLI_COL_CUSTOMER ="customer"; //顧客の担当者
     String CLI_COL_MANAGER = "manager"; // 社内の担当者
     String CLI_COL_CREATED_AT = "created_at"; //登録日時
     String CLI_COL_UPDATED_AT = "updated_at"; //更新日時
 
     //全ての顧客をidの降順に取得する
     String Q_CLI_GET_ALL = ENTITY_CLI + ".getAll";
-    String Q_CLI_GET_ALL_DEF = "SELECT c FROM client AS c ORDER BY c.id DESC";
+    String Q_CLI_GET_ALL_DEF = "SELECT c FROM Client AS c ORDER BY c.id DESC";
 
     //全ての顧客の件数を取得する
     String Q_CLI_COUNT = ENTITY_CLI + ".count";
-    String Q_CLI_COUNT_DEF = "SELECT COUNT(c) client AS c";
+    String Q_CLI_COUNT_DEF = "SELECT COUNT(c) FROM Client AS c";
+
 
 
 
