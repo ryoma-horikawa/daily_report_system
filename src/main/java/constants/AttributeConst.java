@@ -48,7 +48,23 @@ public enum AttributeConst {
     REP_ID("id"),
     REP_DATE("report_date"),
     REP_TITLE("title"),
-    REP_CONTENT("content_msg");
+    REP_CONTENT("content_msg"),
+
+    //カスタム
+    //顧客管理
+    CLIENT("client"),
+    CLIENTS("clients"),
+    CLI_COUNT("client_count"),
+    CLI_ID("id"),
+    CLI_NAME("name"),
+    CLI_INFO("information"),
+    CLI_ADDRESS("address"),
+    CLI_PHONE("phone"),
+    CLI_EMAIL("email"),
+    CLI_CUSTOMER("customer"),
+    CLI_MANAGER("manager");
+
+
 
     private final String text;
     private final Integer i;

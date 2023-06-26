@@ -12,6 +12,7 @@ public enum ForwardConst {
     ACT_TOP("Top"),
     ACT_EMP("Employee"),
     ACT_REP("Report"),
+    ACT_CLI("Client"), //カスタム
     ACT_AUTH("Auth"),
 
     //command
@@ -39,7 +40,12 @@ public enum ForwardConst {
     FW_REP_INDEX("reports/index"),
     FW_REP_SHOW("reports/show"),
     FW_REP_NEW("reports/new"),
-    FW_REP_EDIT("reports/edit");
+    FW_REP_EDIT("reports/edit"),
+    //カスタム
+    FW_CLI_INDEX("client/index"),
+    FW_CLI_SHOW("client/show"),
+    FW_CLI_NEW("client/new"),
+    FW_CLI_EDIT("client/edit");
 
     /**
      * 文字列
