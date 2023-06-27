@@ -1,7 +1,6 @@
 package actions;
 
 import java.io.IOException;
-//import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -130,28 +129,98 @@ public class ClientAction extends ActionBase {
         }
     }
 
+    /**
+     * 詳細画面を表示
+     */
+    public void show() throws ServletException, IOException{
+        //idを条件に顧客データを取得する
+        ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
+        if (cv == null) {
+            //該当する顧客データが存在しない場合はエラー画面を表示
+            forward(ForwardConst.FW_ERR_UNKNOWN);
+
+        } else {
+
+            putRequestScope(AttributeConst.CLIENT, cv);
+
+            //詳細画面を表示
+            forward(ForwardConst.FW_CLI_SHOW);
+        }
+    }
+
+    /**
+     * 編集画面を表示する
+     */
+    public void edit() throws ServletException, IOException{
+
+        //idを条件に顧客データを取得する
+        ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
+        //セッションからログイン中の従業員情報を取得
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+
+        if (cv == null || ev.getId() != cv.getEmployee().getId()) {
+            //該当の顧客データが存在しない、または
+            //ログインしている従業員が日報の製作者でない場合はエラー画面を表示
+            forward(ForwardConst.FW_ERR_UNKNOWN);
+
+        } else {
+
+            putRequestScope(AttributeConst.TOKEN, getTokenId());
+            putRequestScope(AttributeConst.CLIENT, cv);
+
+            //編集画面を表示
+            forward(ForwardConst.FW_CLI_EDIT);
+
+        }
+    }
+
+    /**
+     * 更新を行う
+     */
+    public void update() throws ServletException, IOException{
+
+        if (checkToken()) {
+
+            //idを条件に顧客データを取得する
+            ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
+            //入力された顧客内容を設定する
+            cv.setName(getRequestParam(AttributeConst.CLI_NAME));
+            cv.setInformation(getRequestParam(AttributeConst.CLI_INFO));
+            cv.setAddress(getRequestParam(AttributeConst.CLI_ADDRESS));
+            cv.setPhone(getRequestParam(AttributeConst.CLI_PHONE));
+            cv.setEmail(getRequestParam(AttributeConst.CLI_EMAIL));
+            cv.setCustomer(getRequestParam(AttributeConst.CLI_CUSTOMER));
+            cv.setManager(getRequestParam(AttributeConst.CLI_MANAGER));
+
+            //顧客データを更新する
+            List<String> errors = service.update(cv);
+
+            if (errors.size() > 0) {
+                //更新したエラーが発生した場合
+
+                putRequestScope(AttributeConst.TOKEN, getTokenId());
+                putRequestScope(AttributeConst.CLIENT, cv);
+                putRequestScope(AttributeConst.ERR, errors);
+
+                //編集画面を再表示
+                forward(ForwardConst.FW_CLI_EDIT);
+            } else {
+                //更新中にエラーがなかった場合
+
+                //セッションに更新完了のフラッシュメッセージを設定
+                putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
+
+                //一覧画面にリダイレクト
+                redirect(ForwardConst.ACT_CLI, ForwardConst.CMD_INDEX);
+            }
+
+
+        }
+    }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

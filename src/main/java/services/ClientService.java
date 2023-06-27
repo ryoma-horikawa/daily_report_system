@@ -34,10 +34,21 @@ public class ClientService extends ServiceBase {
      * 顧客テーブルのデータの件数を取得し、返却する
      * @return データの件数
      */
+
     public long countAll() {
-        long clients_count = (long) em.createNamedQuery(JpaConst.Q_REP_COUNT, Long.class)
+        long clients_count = (long) em.createNamedQuery(JpaConst.Q_CLI_COUNT, Long.class)
                 .getSingleResult();
         return clients_count;
+    }
+
+
+    /**
+     * idを条件に取得したデータをReportViewのインスタンスで返却する
+     * @param id
+     * @return 取得データのインスタンス
+     */
+    public ClientView findOne(int id) {
+        return ClientConverter.toView(findOneInternal(id));
     }
 
     /**
@@ -118,23 +129,6 @@ public class ClientService extends ServiceBase {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -38,6 +38,7 @@
 
 <label for="${AttributeConst.CLI_MANAGER.getValue()}">社内担当者</label><br/>
 <input type="text" name="${AttributeConst.CLI_MANAGER.getValue()}" id="${AttributeConst.CLI_MANAGER.getValue()}" value="${client.manager}"/>
+<select></select>
 <br /><br />
 
 
