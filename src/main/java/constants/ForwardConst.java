@@ -42,10 +42,10 @@ public enum ForwardConst {
     FW_REP_NEW("reports/new"),
     FW_REP_EDIT("reports/edit"),
     //カスタム
-    FW_CLI_INDEX("client/index"),
-    FW_CLI_SHOW("client/show"),
-    FW_CLI_NEW("client/new"),
-    FW_CLI_EDIT("client/edit");
+    FW_CLI_INDEX("clients/index"),
+    FW_CLI_SHOW("clients/show"),
+    FW_CLI_NEW("clients/new"),
+    FW_CLI_EDIT("clients/edit");
 
     /**
      * 文字列
