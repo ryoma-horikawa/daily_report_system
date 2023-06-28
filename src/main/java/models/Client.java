@@ -30,7 +30,12 @@ import lombok.Setter;
             query = JpaConst.Q_CLI_GET_ALL_DEF),
     @NamedQuery(
             name = JpaConst.Q_CLI_COUNT,
-            query = JpaConst.Q_CLI_COUNT_DEF)
+            query = JpaConst.Q_CLI_COUNT_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_CLI_COUNT_REGISTERED_BY_CLICODE,
+            query = JpaConst.Q_CLI_COUNT_REGISTERED_BY_CLICODE_DEF)
+
+
 })
 
 @Getter //全てのクラスフィールドについてgetterを自動生成する(Lombok)
@@ -56,10 +61,16 @@ public class Client {
     private Employee employee;
 
     /**
+     * 顧客番号
+     */
+    @Column(name = JpaConst.CLI_COL_CLICODE, length = 5 ,nullable = false, unique = true)
+    private String cli_code;
+
+    /**
      * 顧客の名前
      */
-    @Column(name = JpaConst.CLI_COL_NAME, nullable = false)
-    private String name;
+    @Column(name = JpaConst.CLI_COL_CLINAME, nullable = false)
+    private String cli_name;
 
     /**
      * 顧客の情報

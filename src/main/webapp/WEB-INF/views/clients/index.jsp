@@ -19,14 +19,16 @@
         <table id="client_list">
             <tbody>
                 <tr>
-                    <th class="client_name">会社名</th>
+                    <th class="client_cli_code">顧客番号</th>
+                    <th class="client_cli_name">会社名</th>
                     <th class="client_information">会社情報</th>
                     <th class="client_action">操作</th>
                 </tr>
                 <c:forEach var="client" items="${clients}" varStatus="status">
 
                     <tr>
-                        <td class="client_name">${client.name}</td>
+                        <td class="client_cli_code">${client.cli_code}</td>
+                        <td class="client_cli_name">${client.cli_name}</td>
                         <td class="client_information">${client.information}</td>
                         <td class="client_action"><a href="<c:url value='?action=${actCli}&command=${commShow}&id=${client.id }'/>">詳細を見る</a></td>
                     </tr>

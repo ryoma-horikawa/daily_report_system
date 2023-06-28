@@ -49,6 +49,7 @@ public interface JpaConst {
     String JPQL_PARM_CODE = "code"; //社員番号
     String JPQL_PARM_PASSWORD = "password"; //パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
+    String JPQL_PARM_CLICODE = "cli_code"; //顧客番号
 
     //NamedQueryの nameとquery
     //全ての従業員をidの降順に取得する
@@ -83,8 +84,9 @@ public interface JpaConst {
     String TABLE_CLI = "client"; //テーブル名
     //顧客テーブルカラム
     String CLI_COL_ID = "id"; //id
+    String CLI_COL_CLICODE = "cli_code"; //追記 会社番号
     String CLI_COL_EMP = "employee_id"; //顧客情報を作成した従業員のid
-    String CLI_COL_NAME = "name"; //顧客の名前
+    String CLI_COL_CLINAME = "cli_name"; //顧客の名前
     String CLI_COL_INFO = "information"; //顧客の情報
     String CLI_COL_ADDRESS = "address"; //顧客の住所
     String CLI_COL_PHONE = "phone"; //顧客の電話番号
@@ -102,6 +104,9 @@ public interface JpaConst {
     String Q_CLI_COUNT = ENTITY_CLI + ".count";
     String Q_CLI_COUNT_DEF = "SELECT COUNT(c) FROM Client AS c";
 
+  //指定した社員番号を保持する従業員の件数を取得する
+    String Q_CLI_COUNT_REGISTERED_BY_CLICODE = ENTITY_CLI + ".countRegisteredByCli_code";
+    String Q_CLI_COUNT_REGISTERED_BY_CLICODE_DEF = "SELECT COUNT(c) FROM Client AS c WHERE c.cli_code = :" + JPQL_PARM_CLICODE;
 
 
 

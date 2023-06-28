@@ -95,7 +95,8 @@ public class ClientAction extends ActionBase {
             ClientView cv = new ClientView(
                     null,
                     ev,
-                    getRequestParam(AttributeConst.CLI_NAME),
+                    getRequestParam(AttributeConst.CLI_CLICODE),
+                    getRequestParam(AttributeConst.CLI_CLINAME),
                     getRequestParam(AttributeConst.CLI_INFO),
                     getRequestParam(AttributeConst.CLI_ADDRESS),
                     getRequestParam(AttributeConst.CLI_PHONE),
@@ -187,7 +188,8 @@ public class ClientAction extends ActionBase {
             ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
             //入力された顧客内容を設定する
-            cv.setName(getRequestParam(AttributeConst.CLI_NAME));
+            cv.setCli_code(getRequestParam(AttributeConst.CLI_CLICODE));
+            cv.setCli_name(getRequestParam(AttributeConst.CLI_CLINAME));
             cv.setInformation(getRequestParam(AttributeConst.CLI_INFO));
             cv.setAddress(getRequestParam(AttributeConst.CLI_ADDRESS));
             cv.setPhone(getRequestParam(AttributeConst.CLI_PHONE));

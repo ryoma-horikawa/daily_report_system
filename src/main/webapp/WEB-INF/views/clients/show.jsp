@@ -15,8 +15,12 @@
         <table>
             <tbody>
                 <tr>
+                    <th>顧客番号</th>
+                    <td><pre><c:out value="${client.cli_code }"/></pre></td>
+                </tr>
+                <tr>
                     <th>会社名</th>
-                    <td><pre><c:out value="${client.name }"/></pre></td>
+                    <td><pre><c:out value="${client.cli_name }"/></pre></td>
                 </tr>
                 <tr>
                     <th>会社情報</th>

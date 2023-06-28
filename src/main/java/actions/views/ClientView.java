@@ -29,9 +29,14 @@ public class ClientView {
     private EmployeeView employee;
 
     /**
+     * 顧客番号
+     */
+    private String cli_code;
+
+    /**
      * 顧客の名前
      */
-    private String name;
+    private String cli_name;
 
     /**
      * 顧客の情報

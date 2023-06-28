@@ -12,8 +12,12 @@
     </div>
 </c:if>
 
-<label for="${AttributeConst.CLI_NAME.getValue()}">会社名</label><br/>
-<input type="text" name="${AttributeConst.CLI_NAME.getValue()}" id="${AttributeConst.CLI_NAME.getValue()}" value="${client.name}"/>
+<label for="${AttributeConst.CLI_CLICODE.getValue()}">顧客番号</label><br/>
+<input type="text" name="${AttributeConst.CLI_CLICODE.getValue()}" id="${AttributeConst.CLI_CLICODE.getValue()}" value="${client.cli_code}"/>
+<br /><br />
+
+<label for="${AttributeConst.CLI_CLINAME.getValue()}">会社名</label><br/>
+<input type="text" name="${AttributeConst.CLI_CLINAME.getValue()}" id="${AttributeConst.CLI_CLINAME.getValue()}" value="${client.cli_name}"/>
 <br /><br />
 
 <label for="${AttributeConst.CLI_INFO.getValue()}">会社情報</label><br/>
@@ -38,7 +42,6 @@
 
 <label for="${AttributeConst.CLI_MANAGER.getValue()}">社内担当者</label><br/>
 <input type="text" name="${AttributeConst.CLI_MANAGER.getValue()}" id="${AttributeConst.CLI_MANAGER.getValue()}" value="${client.manager}"/>
-<select></select>
 <br /><br />
 
 

@@ -25,7 +25,12 @@ public enum MessageConst {
     E_NOTITLE("タイトルを入力してください。"),
     E_NOCONTENT("内容を入力してください。"),
     //カスタム
-    E_NOINFO("情報を入力してください");
+    E_NOCLI_CLICODE("顧客番号を入力してください。"),
+    E_CLI_CLICODE_EXIST("入力された顧客番号は既に存在しています。"),
+    E_NOCLI_CLINAME("会社名を入力してください。"),
+    E_NOINFO("会社情報を入力してください");
+
+
     /*,
     E_NOADDRESS("住所を入力してください"),
     E_PHONE("電話番号を入力してください"),

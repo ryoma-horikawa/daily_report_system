@@ -20,7 +20,8 @@ public class ClientConverter {
         return new Client(
                 cv.getId(),
                 EmployeeConverter.toModel(cv.getEmployee()),
-                cv.getName(),
+                cv.getCli_code(),
+                cv.getCli_name(),
                 cv.getInformation(),
                 cv.getAddress(),
                 cv.getPhone(),
@@ -46,7 +47,8 @@ public class ClientConverter {
         return new ClientView(
                 c.getId(),
                 EmployeeConverter.toView(c.getEmployee()),
-                c.getName(),
+                c.getCli_code(),
+                c.getCli_name(),
                 c.getInformation(),
                 c.getAddress(),
                 c.getPhone(),
@@ -81,7 +83,8 @@ public class ClientConverter {
     public static void copyViewToModel(Client c, ClientView cv) {
         c.setId(cv.getId());
         c.setEmployee(EmployeeConverter.toModel(cv.getEmployee()));
-        c.setName(cv.getName());
+        c.setCli_code(cv.getCli_code());
+        c.setCli_name(cv.getCli_name());
         c.setInformation(cv.getInformation());
         c.setAddress(cv.getAddress());
         c.setPhone(cv.getPhone());
