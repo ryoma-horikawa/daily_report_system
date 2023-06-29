@@ -16,9 +16,10 @@
             </div>
         </c:if>
         <h2>日報　一覧</h2>
+        <div class="listScroll">
         <table id="report_list">
             <tbody>
-                <tr>
+                <tr class="column">
                     <th class="report_name">氏名</th>
                     <th class="report_date">日付</th>
                     <th class="report_title">タイトル</th>
@@ -36,7 +37,7 @@
                 </c:forEach>
             </tbody>
         </table>
-
+        </div>
         <div id="pagination">
             （全 ${reports_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / maxRow) + 1}" step="1">

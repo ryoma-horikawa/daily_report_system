@@ -8,17 +8,21 @@ body {
 }
 
 
-#header{height: 70px;}
+
 
 
 #header {
     width: 100%;
     height: 70px;
-    /*position: fixed;
-    top: 70px;
-    */
     background-color: #333333;
+    /*
+    下記ヘッダーの固定
+    */
+    display: flex;
+    position: sticky;
+    top: 0;
 }
+
 
 #content {
     width: 94%;
@@ -145,10 +149,6 @@ h1 a {
     color: #eeeeee;
 }
 
-table#report_list th{
-    font-weight: bold;
-    padding: 10px 2%;
-}
 
 table#report_list .report_name{
     width: 20%;
@@ -192,5 +192,42 @@ table#client_list .client_action{
     width: 15%;
 }
 
+
+/* スクロールバーの調整 */
+
+.listScroll{
+    width: 100%;
+    height: 400px;
+ overflow: scroll;
+    overflow-x: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: nowrap;
+}
+/*
+
+td {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    text-align: center;
+}
+th {
+    border-bottom: solid black;
+    border-left: solid black;
+    border-right: solid black;
+    border-top: solid black;
+    border-width: 2px;
+    text-align: center;
+}
+*/
+.column{
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: white;
+
+}
 
 
