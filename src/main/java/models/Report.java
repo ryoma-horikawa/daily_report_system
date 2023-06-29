@@ -46,6 +46,7 @@ import lombok.Setter;
 @NoArgsConstructor //引数なしコンストラクタを自動生成する(Lombok)
 @AllArgsConstructor //全てのクラスフィールドを引数にもつ引数ありコンストラクタを自動生成する(Lombok)
 @Entity
+
 public class Report {
 
     /**
@@ -74,6 +75,8 @@ public class Report {
      */
     @Column(name = JpaConst.REP_COL_TITLE, length = 255, nullable = false)
     private String title;
+
+
 
     /**
      * 日報の内容
