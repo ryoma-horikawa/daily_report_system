@@ -62,11 +62,26 @@ table, tr, th, td {
 
 table {
     width: 100%;
+    height: 100%;
     table-layout: fixed;
+    /*
+    border-bottom: solid black;
+    border-top: solid black;
+    */
+    /*
+    border-left: solid black;
+
+    border-right: solid black;
+    */
+
+
+
 }
 
 th {
+    /*
     width: 26%;
+    */
     padding: 10px 2%;
 }
 
@@ -105,8 +120,10 @@ button {
 }
 
 table#employee_list th {
+    /*
     width: 30%;
-    padding: 10px 2%;
+    */
+    padding: 10px 10%;
 }
 
 table#employee_list td{
@@ -125,6 +142,9 @@ tr.row0{
 select {
     height: 30px;
 }
+
+
+
 
 #header_menu {
     width: 57%;
@@ -150,6 +170,10 @@ h1 a {
 }
 
 
+
+
+
+
 table#report_list .report_name{
     width: 20%;
     padding: 10px 2%;
@@ -159,13 +183,16 @@ table#report_list .report_date{
     width: 20%;
 }
 
-Ttable#report_list .report_title{
+table#report_list .report_title{
     width: 37%;
 }
 
 table#report_list .report_action{
     width: 13%;
 }
+
+
+
 
 pre{
     font-family: "Hiragino Kaku Gothic Pro", Meiryo, "MS PGothic", Helvetica,Arial,sans-serif;
@@ -174,7 +201,7 @@ pre{
 h3 {
     font-size: larger;
 }
-
+/*
 table#client_list th{
     font-weight: bold;
     padding: 10px 2%;
@@ -191,19 +218,52 @@ table#client_list .client_information{
 table#client_list .client_action{
     width: 15%;
 }
+*/
+
+.list {
+
+    border-top: solid black;
+    border-right: solid black;
+    border-left: solid black;
+}
+
+.Scroll-padding{
+    padding-right: 16.5px;
+    background-color: silver;
+}
+
 
 
 /* スクロールバーの調整 */
 
 .listScroll{
     width: 100%;
-    height: 400px;
- overflow: scroll;
+    height: 300px;
+    overflow: scroll;
     overflow-x: hidden;
     margin-left: auto;
     margin-right: auto;
     white-space: nowrap;
+
+    border-top: solid black;
+
+    border-bottom: solid black;
+
+
 }
+
+.column{
+    position: sticky;
+    top: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #C0C0C0;
+
+}
+
+
+
+
 /*
 
 td {
@@ -220,14 +280,19 @@ th {
     border-width: 2px;
     text-align: center;
 }
+
+
 */
-.column{
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background-color: white;
+/*
+スクロールバーの幅分
 
+.space{
+    width: 10px;
 }
-
+*/
+/*
+.list{
+    padding: 10px
+}
+*/
 

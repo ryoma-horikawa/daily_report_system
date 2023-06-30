@@ -16,32 +16,40 @@
             </div>
         </c:if>
         <h2>従業員　一覧</h2>
-        <div class="listScroll">
-            <table id="employee_list">
-                <tbody>
-                    <tr class="column">
-                        <th>社員番号</th>
-                        <th>氏名</th>
-                        <th>操作</th>
-                    </tr>
-                    <c:forEach var="employee" items="${employees}" varStatus="status">
-                        <tr class="row${status.count % 2}">
-                            <td><c:out value="${employee.code}" /></td>
-                            <td><c:out value="${employee.name}" /></td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${employee.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
-                                        （削除済み）
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
+        <div class="list">
+            <div class="Scroll-padding">
+                <table id="employee_list">
+                    <thead class="column">
+                        <tr>
+                            <th>社員番号</th>
+                            <th>氏名</th>
+                            <th>操作</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                </table>
+            </div>
+            <div class="listScroll">
+                <table>
+                    <tbody>
+                        <c:forEach var="employee" items="${employees}" varStatus="status">
+                            <tr class="row${status.count % 2}">
+                                <td><c:out value="${employee.code}" /></td>
+                                <td><c:out value="${employee.name}" /></td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${employee.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
+                                            （削除済み）
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div id="pagination">
             （全 ${employees_count} 件）<br />
