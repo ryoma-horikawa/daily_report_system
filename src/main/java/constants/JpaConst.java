@@ -69,6 +69,8 @@ public interface JpaConst {
     //全ての日報をidの降順に取得する
     String Q_REP_GET_ALL = ENTITY_REP + ".getAll";
     String Q_REP_GET_ALL_DEF = "SELECT r FROM Report AS r ORDER BY r.id DESC";
+    //String Q_REP_GET_ALL_DEF = "SELECT r FROM Report AS r ORDER BY r.id ASC, report_date DESC";
+    //String Q_REP_GET_ALL_DEF = "SELECT r,count(r) as r_num FROM Report AS r ORDER BY r.id game_character GROUP BY r DESC";
     //全ての日報の件数を取得する
     String Q_REP_COUNT = ENTITY_REP + ".count";
     String Q_REP_COUNT_DEF = "SELECT COUNT(r) FROM Report AS r";

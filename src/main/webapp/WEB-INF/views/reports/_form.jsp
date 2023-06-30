@@ -24,16 +24,15 @@
 <label for="${AttributeConst.REP_TITLE.getValue()}">タイトル</label><br />
 <input type="text" name="${AttributeConst.REP_TITLE.getValue()}" id="${AttributeConst.REP_TITLE.getValue()}" value="${report.title}" />
 <br /><br />
-
+<!--
 <select><optgroup label="00" ></optgroup></select>
-
-<option
+            <option
                 th:each="prefectures : ${prefecturesList}"
                 th:value="${prefectures.code}"
                 th:text="${prefectures.name}"
                 th:selected="${prefectures.code == selectedValue}">
-            </option>
-
+            <a/option>
+-->
 <label for="${AttributeConst.REP_CONTENT.getValue()}">内容</label><br />
 <textarea  name="${AttributeConst.REP_CONTENT.getValue()}" id="${AttributeConst.REP_CONTENT.getValue()}" rows="10" cols="50">${report.content}</textarea>
 <br /><br />

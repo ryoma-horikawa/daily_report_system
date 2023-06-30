@@ -21,11 +21,27 @@
                 <table id="report_list">
                     <thead  class="column">
                         <tr>
-                            <th class="report_name">氏名</th>
-                            <th class="report_date">日付</th>
+                            <th class="report_name" >氏名</th>
+                            <th class="report_date" >日付</th>
                             <th class="report_title">タイトル</th>
                             <th class="report_action">操作</th>
                         </tr>
+
+                    <!--
+                        <tr>
+                            <th class="report_name" cmanSortBtn>氏名</th>
+                            <th class="report_date" cmanSortBtn>日付</th>
+                            <th class="report_title" cmanSortBtn>タイトル</th>
+                            <th class="report_action">操作</th>
+                        </tr> -->
+
+
+                        <!--  <tr>
+                            <th class="report_name" data-id="report_name" sortable>氏名</th>
+                            <th class="report_date" data-id="report_date" sortable>日付</th>
+                            <th class="report_title" data-id="report_title" sortable>タイトル</th>
+                            <th class="report_action">操作</th>
+                        </tr> -->
                     </thead>
                 </table>
             </div>
@@ -37,7 +53,9 @@
 
                             <tr class="row${status.count % 2}">
                                 <td class="report_name"><c:out value="${report.employee.name}" /></td>
-                                <td class="report_date"><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td>
+                                <td class="report_date"><a href="<c:url value='?action=${actRep}'/>" ><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></a></td>
+
+                                <!-- <td class="report_date"><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td> -->
                                 <td class="report_title">${report.title}</td>
                                 <td class="report_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${report.id}' />">詳細を見る</a></td>
                             </tr>
@@ -46,6 +64,7 @@
                 </table>
             </div>
         </div>
+
         <div id="pagination">
             （全 ${reports_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / maxRow) + 1}" step="1">
@@ -60,6 +79,8 @@
             </c:forEach>
         </div>
         <p><a href="<c:url value='?action=${actRep}&command=${commNew}' />">新規日報の登録</a></p>
+
+
 
     </c:param>
 </c:import>
