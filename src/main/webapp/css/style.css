@@ -83,6 +83,7 @@ th {
     width: 26%;
     */
     padding: 10px 2%;
+    text-align: center;
 }
 
 td {
@@ -201,6 +202,7 @@ pre{
 h3 {
     font-size: larger;
 }
+
 /*
 table#client_list th{
     font-weight: bold;
@@ -221,10 +223,11 @@ table#client_list .client_action{
 */
 
 .list {
-
     border-top: solid black;
     border-right: solid black;
     border-left: solid black;
+    text-align: center;
+
 }
 
 .Scroll-padding{
@@ -244,9 +247,7 @@ table#client_list .client_action{
     margin-left: auto;
     margin-right: auto;
     white-space: nowrap;
-
     border-top: solid black;
-
     border-bottom: solid black;
 
 
@@ -257,11 +258,8 @@ table#client_list .client_action{
     top: 70px;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: #C0C0C0;
-
+    background-color: #C0C0C0; /* カラムのカラーを灰色に*/
 }
-
-
 
 
 /*
@@ -281,18 +279,4 @@ th {
     text-align: center;
 }
 
-
 */
-/*
-スクロールバーの幅分
-
-.space{
-    width: 10px;
-}
-*/
-/*
-.list{
-    padding: 10px
-}
-*/
-
